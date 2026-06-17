@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>58 години легенда</title>
+  <style>
+    :root {
+      --ink: #07080d;
+      --night: #10131b;
+      --panel: #161b24;
+      --panel-2: #1e2430;
+      --paper: #f5efe4;
+      --muted: #b8c0ca;
+      --gold: #d5a84b;
+      --red: #c62232;
+      --wine: #6f1422;
+      --sea: #176b7d;
+      --steel: #8aa0b4;
+      --green: #2f6b4f;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 22px 80px rgba(0, 0, 0, 0.45);
+      color-scheme: dark;
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(198, 34, 50, 0.24), transparent 32rem),
+        radial-gradient(circle at 85% 22%, rgba(23, 107, 125, 0.22), transparent 30rem),
+        linear-gradient(145deg, #05060a 0%, #111620 42%, #08090e 100%);
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.34;
+      z-index: 10;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 42px 42px, 54px 54px;
+      mix-blend-mode: soft-light;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem clamp(1rem, 3vw, 2.5rem);
+      background: linear-gradient(180deg, rgba(5, 6, 10, 0.9), rgba(5, 6, 10, 0.24));
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: 0;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .mark-number {
+      display: grid;
+      place-items: center;
+      width: 2.3rem;
+      height: 2.3rem;
+      border: 1px solid rgba(213, 168, 75, 0.72);
+      color: var(--gold);
+      background: linear-gradient(145deg, rgba(213, 168, 75, 0.14), rgba(198, 34, 50, 0.18));
+      border-radius: 50%;
+      box-shadow: 0 0 28px rgba(213, 168, 75, 0.18);
+      flex: 0 0 auto;
+    }
+
+    .mark-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav a,
+    .quiet-button {
+      display: inline-grid;
+      place-items: center;
+      min-height: 2.25rem;
+      padding: 0 0.85rem;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: color 180ms ease, background 180ms ease;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .quiet-button:hover {
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .stage-art {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 72%, rgba(213, 168, 75, 0.18), transparent 19rem),
+        linear-gradient(180deg, rgba(7,8,13,0.05) 0%, rgba(7,8,13,0.72) 82%, #07080d 100%);
+    }
+
+    .stage-art::before,
+    .stage-art::after {
+      content: "";
+      position: absolute;
+      top: -12%;
+      width: 26vw;
+      min-width: 190px;
+      height: 120%;
+      transform-origin: top;
+      filter: blur(1px);
+      opacity: 0.62;
+      background: linear-gradient(180deg, rgba(213, 168, 75, 0.42), rgba(198, 34, 50, 0.08) 58%, transparent 100%);
+      clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%);
+      animation: sweep 9s ease-in-out infinite;
+    }
+
+    .stage-art::before {
+      left: 4%;
+      transform: rotate(15deg);
+    }
+
+    .stage-art::after {
+      right: 8%;
+      transform: rotate(-18deg);
+      background: linear-gradient(180deg, rgba(23, 107, 125, 0.38), rgba(198, 34, 50, 0.09) 58%, transparent 100%);
+      animation-delay: -4s;
+    }
+
+    .stage-grid {
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      bottom: -10%;
+      height: 44%;
+      background:
+        linear-gradient(rgba(255,255,255,0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 100% 14%, 8% 100%;
+      transform: perspective(640px) rotateX(62deg);
+      transform-origin: bottom center;
+      opacity: 0.22;
+      mask-image: linear-gradient(transparent, black 35%);
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 5rem 0 0;
+      width: 100%;
+      height: calc(100% - 5rem);
+      opacity: 0.82;
+      filter: drop-shadow(0 34px 80px rgba(0,0,0,0.55));
+      z-index: -2;
+    }
+
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(7,8,13,0.94) 0%, rgba(7,8,13,0.7) 38%, rgba(7,8,13,0.18) 68%, rgba(7,8,13,0.72) 100%),
+        linear-gradient(180deg, rgba(7,8,13,0.22) 0%, rgba(7,8,13,0.64) 100%);
+    }
+
+    .hero-content {
+      display: grid;
+      align-content: center;
+      gap: 2rem;
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 7.6rem 0 5rem;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 0 0 1.2rem;
+      color: var(--gold);
+      font-size: clamp(0.78rem, 1vw, 0.95rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 3.8rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 12ch;
+      font-size: clamp(4rem, 14vw, 10.5rem);
+      line-height: 0.82;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+      color: transparent;
+      background: linear-gradient(135deg, #fff6dc 0%, var(--gold) 42%, #e03142 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: none;
+    }
+
+    .subtitle {
+      margin: 1.6rem 0 0;
+      max-width: 58ch;
+      color: #d8dde4;
+      font-size: clamp(1.05rem, 2vw, 1.42rem);
+      line-height: 1.58;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .primary-button,
+    .secondary-button,
+    .file-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 3rem;
+      padding: 0 1.1rem;
+      border-radius: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
+    }
+
+    .primary-button {
+      color: #15080a;
+      background: linear-gradient(135deg, #ffe5a0, var(--gold) 42%, #c62232 135%);
+    }
+
+    .secondary-button,
+    .file-button {
+      color: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .secondary-button:hover,
+    .file-button:hover {
+      border-color: rgba(213, 168, 75, 0.58);
+    }
+
+    .icon {
+      display: inline-grid;
+      place-items: center;
+      width: 1.15rem;
+      height: 1.15rem;
+      flex: 0 0 auto;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      width: min(820px, 100%);
+      margin-top: 1.2rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 0.7rem;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      min-height: 7rem;
+      padding: 1rem;
+      background: rgba(10, 13, 19, 0.72);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--paper);
+      font-size: clamp(1.4rem, 4vw, 2.45rem);
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 0.55rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 1.2rem;
+      display: grid;
+      place-items: center;
+      width: 2.2rem;
+      height: 3.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      transform: translateX(-50%);
+      opacity: 0.76;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: drop 1.8s ease-in-out infinite;
+    }
+
+    section {
+      position: relative;
+      padding: clamp(4rem, 8vw, 7.5rem) clamp(1rem, 4vw, 4rem);
+    }
+
+    .section-inner {
+      width: min(1160px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(16rem, 0.52fr);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      align-items: end;
+      margin-bottom: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--paper);
+      font-size: clamp(2rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .section-head p,
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      line-height: 1.7;
+    }
+
+    .chapters {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        radial-gradient(circle at 90% 10%, rgba(23, 107, 125, 0.17), transparent 28rem);
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(15.5rem, 1fr));
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 0 0 1rem;
+      scroll-snap-type: x proximity;
+    }
+
+    .chapter-card {
+      position: relative;
+      min-height: 25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.15rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.5rem;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03)),
+        var(--panel);
+      overflow: hidden;
+      scroll-snap-align: start;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .chapter-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, var(--accent, var(--wine)), transparent 52%),
+        radial-gradient(circle at 90% 12%, rgba(255,255,255,0.22), transparent 8rem);
+      opacity: 0.32;
+      pointer-events: none;
+    }
+
+    .chapter-symbol {
+      position: relative;
+      width: 100%;
+      height: 9rem;
+      display: grid;
+      place-items: center;
+      color: var(--accent, var(--gold));
+    }
+
+    .chapter-symbol svg {
+      width: min(9.2rem, 70%);
+      height: auto;
+      overflow: visible;
+      filter: drop-shadow(0 18px 28px rgba(0,0,0,0.38));
+    }
+
+    .chapter-card h3,
+    .photo-frame h3 {
+      position: relative;
+      margin: 0;
+      color: var(--paper);
+      font-size: 1.45rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .chapter-card p {
+      position: relative;
+      margin: 0.8rem 0 0;
+      color: #d4dae1;
+      line-height: 1.55;
+    }
+
+    .chapter-meta {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(245, 239, 228, 0.72);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    .toast-zone {
+      background:
+        linear-gradient(90deg, rgba(111, 20, 34, 0.72), rgba(14, 18, 26, 0.8)),
+        radial-gradient(circle at 12% 24%, rgba(213,168,75,0.24), transparent 18rem),
+        #090b11;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .toast-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(18rem, 0.42fr);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+
+    .toast-stage {
+      position: relative;
+      min-height: 24rem;
+      display: grid;
+      align-content: center;
+      padding: clamp(1.3rem, 4vw, 3rem);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 0.5rem;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03)),
+        rgba(7, 8, 13, 0.6);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .toast-stage::before {
+      content: "58";
+      position: absolute;
+      right: -0.08em;
+      bottom: -0.22em;
+      color: rgba(255, 255, 255, 0.055);
+      font-size: clamp(10rem, 34vw, 25rem);
+      font-weight: 900;
+      line-height: 0.78;
+    }
+
+    .toast-number {
+      position: relative;
+      color: var(--gold);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.88rem;
+    }
+
+    .toast-text {
+      position: relative;
+      margin: 1rem 0 1.4rem;
+      max-width: 19ch;
+      font-size: clamp(2.2rem, 5.2vw, 5.4rem);
+      line-height: 0.96;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .toast-sub {
+      position: relative;
+      max-width: 54ch;
+      color: #d7dee6;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .toast-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .control-panel {
+      padding: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 0.5rem;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .control-panel label {
+      display: grid;
+      gap: 0.55rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .control-panel input[type="text"] {
+      width: 100%;
+      min-height: 2.8rem;
+      padding: 0 0.8rem;
+      color: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 0.45rem;
+      background: rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+
+    .control-panel input[type="text"]:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(213, 168, 75, 0.16);
+    }
+
+    .progress {
+      height: 0.55rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .progress span {
+      display: block;
+      width: 1.72%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      transition: width 280ms ease;
+    }
+
+    .gallery {
+      background:
+        radial-gradient(circle at 8% 12%, rgba(47, 107, 79, 0.16), transparent 24rem),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.05));
+    }
+
+    .gallery-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .gallery input[type="file"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .photo-frame {
+      position: relative;
+      display: grid;
+      min-height: clamp(15rem, 26vw, 23rem);
+      padding: 1rem;
+      align-content: end;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.5rem;
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.76) 100%),
+        linear-gradient(135deg, rgba(198,34,50,0.34), rgba(23,107,125,0.32)),
+        #161b24;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .photo-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.01);
+    }
+
+    .photo-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.74)),
+        radial-gradient(circle at 20% 10%, rgba(213,168,75,0.26), transparent 12rem);
+    }
+
+    .photo-frame h3,
+    .photo-frame p {
+      position: relative;
+      z-index: 2;
+    }
+
+    .photo-frame p {
+      margin: 0.55rem 0 0;
+      color: #d8dee5;
+      line-height: 1.5;
+    }
+
+    .finale {
+      min-height: 82svh;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(180deg, rgba(7,8,13,0.2), rgba(7,8,13,0.94)),
+        radial-gradient(circle at 50% 40%, rgba(213,168,75,0.2), transparent 22rem);
+      overflow: hidden;
+    }
+
+    .finale .section-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.62fr) minmax(16rem, 0.38fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .finale-copy h2 {
+      font-size: clamp(2.7rem, 8vw, 7rem);
+    }
+
+    .finale-copy p {
+      max-width: 54ch;
+      color: #d9dfe6;
+      font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+      line-height: 1.7;
+    }
+
+    .vinyl {
+      position: relative;
+      aspect-ratio: 1;
+      width: min(24rem, 82vw);
+      margin: 0 auto;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #050506 0 12%, var(--wine) 12.5% 18%, #050506 18.5% 21%, #141821 21.5% 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        inset 0 0 0 2.2rem rgba(255,255,255,0.015),
+        0 30px 90px rgba(0,0,0,0.42);
+      animation: rotate 22s linear infinite;
+    }
+
+    .vinyl::before {
+      content: "";
+      position: absolute;
+      inset: 7%;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow:
+        0 0 0 1.4rem rgba(255,255,255,0.018),
+        0 0 0 3rem rgba(255,255,255,0.012),
+        0 0 0 5rem rgba(255,255,255,0.016);
+    }
+
+    .vinyl span {
+      position: absolute;
+      inset: 36%;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-size: clamp(2.2rem, 7vw, 4.4rem);
+      font-weight: 900;
+      animation: rotate 22s linear infinite reverse;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      background: rgba(3, 4, 8, 0.78);
+      backdrop-filter: blur(16px);
+    }
+
+    .modal.open {
+      display: grid;
+    }
+
+    .modal-box {
+      width: min(760px, 100%);
+      padding: clamp(1.25rem, 4vw, 2.6rem);
+      border: 1px solid rgba(213,168,75,0.35);
+      border-radius: 0.6rem;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(213,168,75,0.18), transparent 14rem),
+        linear-gradient(145deg, rgba(27, 32, 43, 0.98), rgba(10, 12, 18, 0.98));
+      box-shadow: 0 30px 120px rgba(0,0,0,0.65);
+    }
+
+    .modal-box h2 {
+      font-size: clamp(2.2rem, 7vw, 5.4rem);
+    }
+
+    .modal-box p {
+      color: #d9dfe6;
+      line-height: 1.7;
+      font-size: 1.08rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -1rem;
+      width: 0.65rem;
+      height: 1rem;
+      z-index: 60;
+      pointer-events: none;
+      opacity: 0.95;
+      animation: confetti-fall var(--fall, 3s) linear forwards;
+    }
+
+    .live-region {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @keyframes sweep {
+      0%, 100% { transform: rotate(15deg) translateX(0); opacity: 0.42; }
+      50% { transform: rotate(-9deg) translateX(4vw); opacity: 0.72; }
+    }
+
+    @keyframes drop {
+      0% { transform: translateY(-0.75rem); opacity: 0; }
+      35% { opacity: 1; }
+      100% { transform: translateY(0.75rem); opacity: 0; }
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translate3d(0, -1rem, 0) rotate(0deg); }
+      100% { transform: translate3d(var(--drift, 0), 105svh, 0) rotate(720deg); }
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        display: none;
+      }
+
+      .hero-content {
+        padding-top: 6.5rem;
+      }
+
+      .hero-stats,
+      .section-head,
+      .toast-layout,
+      .finale .section-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-shade {
+        background:
+          linear-gradient(180deg, rgba(7,8,13,0.9) 0%, rgba(7,8,13,0.48) 48%, rgba(7,8,13,0.92) 100%);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar {
+        padding-inline: 0.8rem;
+      }
+
+      .mark-title {
+        max-width: 54vw;
+      }
+
+      .hero-actions,
+      .gallery-actions,
+      .modal-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .primary-button,
+      .secondary-button,
+      .file-button {
+        width: 100%;
+      }
+
+      .photo-grid,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-height: auto;
+      }
+
+      .chapter-grid {
+        grid-template-columns: repeat(7, minmax(82vw, 1fr));
+      }
+
+      .toast-stage {
+        min-height: 28rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="mark" href="#top" aria-label="Начало">
+      <span class="mark-number">58</span>
+      <span class="mark-title" data-title>Години легенда</span>
+    </a>
+    <nav class="nav" aria-label="Навигация">
+      <a href="#chapters">Живот</a>
+      <a href="#toast">Наздраве</a>
+      <a href="#photos">Снимки</a>
+      <a href="#finale">Финал</a>
+    </nav>
+    <button class="quiet-button" id="fullscreenButton" type="button" aria-label="Пълен екран">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="none" stroke="currentColor" stroke-width="2" d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"/>
+      </svg>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="stage-art" aria-hidden="true">
+        <div class="stage-grid"></div>
+      </div>
+      <svg class="hero-visual" viewBox="0 0 1400 900" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="goldStroke" x1="0" x2="1">
+            <stop stop-color="#fff2c5"/>
+            <stop offset="0.55" stop-color="#d5a84b"/>
+            <stop offset="1" stop-color="#c62232"/>
+          </linearGradient>
+          <linearGradient id="seaGlow" x1="0" x2="1">
+            <stop stop-color="#176b7d"/>
+            <stop offset="1" stop-color="#8aa0b4"/>
+          </linearGradient>
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="7" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <path d="M0 642 C210 582 318 678 520 614 C758 538 880 666 1118 600 C1250 563 1325 574 1400 602 L1400 900 L0 900 Z" fill="#0b1018" opacity="0.78"/>
+        <path d="M168 624 C312 592 438 610 594 594 C792 574 942 598 1094 574 C1238 551 1320 560 1400 585" fill="none" stroke="url(#seaGlow)" stroke-width="4" opacity="0.62"/>
+
+        <g transform="translate(910 144)" filter="url(#softGlow)" opacity="0.86">
+          <path d="M20 158 C68 34 184 0 314 40 C240 54 156 98 105 185 C73 182 45 172 20 158Z" fill="rgba(23,107,125,0.7)" stroke="#8aa0b4" stroke-width="3"/>
+          <path d="M105 185 C162 108 230 67 314 40" fill="none" stroke="#f5efe4" stroke-width="2" opacity="0.75"/>
+          <path d="M72 181 C98 274 152 328 233 344" fill="none" stroke="#d5a84b" stroke-width="3" stroke-dasharray="7 10" opacity="0.6"/>
+        </g>
+
+        <g transform="translate(112 178)" opacity="0.82">
+          <path d="M70 54 L70 282" stroke="#8aa0b4" stroke-width="10" stroke-linecap="round"/>
+          <path d="M70 72 C146 36 178 72 218 48" fill="none" stroke="url(#goldStroke)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M34 294 L106 294 L132 360 L8 360Z" fill="#08090e" stroke="#d5a84b" stroke-width="3"/>
+          <circle cx="70" cy="52" r="26" fill="#10131b" stroke="#f5efe4" stroke-width="4"/>
+        </g>
+
+        <g transform="translate(1014 540)" opacity="0.72">
+          <ellipse cx="146" cy="162" rx="136" ry="24" fill="#000" opacity="0.46"/>
+          <path d="M38 136 C66 82 121 58 209 72 C246 76 271 96 296 124 L328 132 C344 136 354 147 360 160 L18 160 C20 148 26 141 38 136Z" fill="#0d1119" stroke="#8aa0b4" stroke-width="4"/>
+          <circle cx="98" cy="160" r="34" fill="#06070b" stroke="#d5a84b" stroke-width="5"/>
+          <circle cx="286" cy="160" r="34" fill="#06070b" stroke="#d5a84b" stroke-width="5"/>
+          <path d="M120 78 C156 48 236 58 270 118" fill="none" stroke="#c62232" stroke-width="5"/>
+        </g>
+
+        <g transform="translate(650 534)" opacity="0.78">
+          <ellipse cx="160" cy="172" rx="145" ry="26" fill="#000" opacity="0.42"/>
+          <path d="M42 76 L246 50 C277 47 300 70 304 104 L314 162 L28 162 L34 102 C36 86 43 78 42 76Z" fill="#0d1119" stroke="#8aa0b4" stroke-width="4"/>
+          <path d="M78 80 L116 74 L118 132 L72 132Z" fill="rgba(23,107,125,0.44)"/>
+          <path d="M136 72 L222 62 L238 132 L138 132Z" fill="rgba(23,107,125,0.34)"/>
+          <circle cx="88" cy="164" r="33" fill="#06070b" stroke="#d5a84b" stroke-width="5"/>
+          <circle cx="256" cy="164" r="33" fill="#06070b" stroke="#d5a84b" stroke-width="5"/>
+        </g>
+
+        <g transform="translate(440 420)" filter="url(#softGlow)">
+          <circle cx="160" cy="160" r="120" fill="#0e131c" stroke="#8aa0b4" stroke-width="12"/>
+          <circle cx="160" cy="160" r="86" fill="none" stroke="#d5a84b" stroke-width="3" stroke-dasharray="2 15"/>
+          <path d="M160 160 L160 82" stroke="#f5efe4" stroke-width="7" stroke-linecap="round"/>
+          <path d="M160 160 L224 194" stroke="#c62232" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="160" cy="160" r="10" fill="#d5a84b"/>
+          <path d="M98 38 C127 18 197 18 224 38" fill="none" stroke="#d5a84b" stroke-width="16" stroke-linecap="round"/>
+        </g>
+
+        <g transform="translate(238 520)" opacity="0.85">
+          <path d="M82 28 C124 86 130 190 92 258 C52 194 48 86 82 28Z" fill="rgba(111,20,34,0.74)" stroke="#f5efe4" stroke-width="3"/>
+          <path d="M58 96 C76 111 96 111 112 96" fill="none" stroke="#d5a84b" stroke-width="3" opacity="0.78"/>
+          <path d="M84 258 L84 360" stroke="#f5efe4" stroke-width="4"/>
+          <path d="M34 364 L134 364" stroke="#f5efe4" stroke-width="5" stroke-linecap="round"/>
+        </g>
+
+        <g transform="translate(124 690)" opacity="0.86">
+          <path d="M52 76 C64 30 120 28 148 66 C176 62 196 72 210 100 C234 106 246 124 242 150 L38 150 C30 122 34 96 52 76Z" fill="#0b0d12" stroke="#d5a84b" stroke-width="3"/>
+          <circle cx="92" cy="90" r="8" fill="#f5efe4"/>
+          <path d="M142 62 C146 28 174 18 194 26 C176 42 166 58 168 82" fill="#0b0d12" stroke="#d5a84b" stroke-width="3"/>
+          <path d="M216 106 C248 80 278 92 284 126" fill="none" stroke="#d5a84b" stroke-width="8" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <div class="hero-shade" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-copy">
+          <p class="kicker">Рожден ден · 58</p>
+          <h1 id="heroTitle"><span data-name-title>Тате</span> на 58</h1>
+          <p class="subtitle">
+            Вечер за човек с рок в кръвта, вятър в сърцето, точност в детайла,
+            вкус към пътя, скоростта, хубавото вино и верните същества.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="primary-button" id="igniteButton" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 2l2.4 6.7L21 11l-6.6 2.3L12 20l-2.4-6.7L3 11l6.6-2.3L12 2Z"/>
+            </svg>
+            Запали сцената
+          </button>
+          <a class="secondary-button" href="#toast">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2" d="M8 3h8l-1 8a3 3 0 0 1-6 0L8 3Zm4 11v6m-4 0h8"/>
+            </svg>
+            Наздраве
+          </a>
+        </div>
+
+        <div class="hero-stats" aria-label="Акценти">
+          <div class="stat">
+            <strong>Rock</strong>
+            <span>KISS, китари и сцена с характер.</span>
+          </div>
+          <div class="stat">
+            <strong>Wind</strong>
+            <span>Кайт, море и свобода без излишни думи.</span>
+          </div>
+          <div class="stat">
+            <strong>911</strong>
+            <span>Сърце за коли, G-класа и легендарни линии.</span>
+          </div>
+          <div class="stat">
+            <strong>Richi</strong>
+            <span>Семейната вярност, която винаги го познава.</span>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#chapters" aria-label="Надолу"></a>
+    </section>
+
+    <section class="chapters" id="chapters" aria-labelledby="chaptersTitle">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 id="chaptersTitle">Седем глави. Един човек.</h2>
+          <p>Рок, вятър, пътища, механика, автомобили, вино и Ричи - всичко, което прави празника личен.</p>
+        </div>
+
+        <div class="chapter-grid" aria-label="Глави от празника">
+          <article class="chapter-card" style="--accent:#c62232">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M58 18v56" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+                <path d="M58 25c30-17 44 8 56-5" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round"/>
+                <circle cx="58" cy="18" r="13" fill="none" stroke="currentColor" stroke-width="6"/>
+                <path d="M35 82h46l15 26H20z" fill="none" stroke="currentColor" stroke-width="6"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Китари и характер</h3>
+              <p>За мъжа, при когото рокът не е фон, а начин да вървиш напред с гръбнак.</p>
+            </div>
+            <div class="chapter-meta"><span>KISS</span><span>сцена</span></div>
+          </article>
+
+          <article class="chapter-card" style="--accent:#176b7d">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M14 69c23-48 67-63 100-41-32 5-58 26-75 65-10-4-18-12-25-24z" fill="none" stroke="currentColor" stroke-width="6"/>
+                <path d="M39 93c19-34 43-55 75-65" stroke="currentColor" stroke-width="5" fill="none"/>
+                <path d="M32 93c11 20 28 31 53 34" stroke="currentColor" stroke-width="5" fill="none" stroke-dasharray="6 8"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Вятър под платното</h3>
+              <p>Кайтът е онова място, където човек разбира колко красиво е да държиш посоката.</p>
+            </div>
+            <div class="chapter-meta"><span>kite</span><span>sea</span></div>
+          </article>
+
+          <article class="chapter-card" style="--accent:#2f6b4f">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M20 24l26 8 30-12 24 9v67l-24-9-30 12-26-8z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M46 32v67M76 20v67" stroke="currentColor" stroke-width="5"/>
+                <path d="M31 70c19-22 40-22 65-5" stroke="currentColor" stroke-width="5" fill="none"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Пътища и хоризонти</h3>
+              <p>Много пътувания, много истории и онова спокойно умение да се прибираш по-богат.</p>
+            </div>
+            <div class="chapter-meta"><span>world</span><span>memory</span></div>
+          </article>
+
+          <article class="chapter-card" style="--accent:#8aa0b4">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle cx="60" cy="60" r="36" fill="none" stroke="currentColor" stroke-width="7"/>
+                <path d="M60 60V32M60 60l25 13" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                <path d="M42 16c11-7 25-7 36 0M42 104c11 7 25 7 36 0" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <circle cx="60" cy="60" r="4" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Точният момент</h3>
+              <p>Часовникът е детайл, но вкусът към детайла казва много за човека.</p>
+            </div>
+            <div class="chapter-meta"><span>time</span><span>craft</span></div>
+          </article>
+
+          <article class="chapter-card" style="--accent:#d5a84b">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M17 66c8-24 30-37 64-33 13 2 22 9 30 24l-5 27H14z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                <circle cx="38" cy="84" r="11" fill="none" stroke="currentColor" stroke-width="6"/>
+                <circle cx="90" cy="84" r="11" fill="none" stroke="currentColor" stroke-width="6"/>
+                <path d="M47 35c19-19 47-5 55 24" fill="none" stroke="currentColor" stroke-width="6"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Гараж със стил</h3>
+              <p>G-класата за силата на пътя. Porsche 911 за линията, която не остарява.</p>
+            </div>
+            <div class="chapter-meta"><span>G</span><span>911</span></div>
+          </article>
+
+          <article class="chapter-card" style="--accent:#6f1422">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M42 14h36l-5 48a13 13 0 0 1-26 0z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M45 48c10 6 21 6 31 0" stroke="currentColor" stroke-width="5" fill="none"/>
+                <path d="M60 76v25M37 104h46" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Червено вино</h3>
+              <p>За дългите вечери, добрите разговори и чашите, които остават в паметта.</p>
+            </div>
+            <div class="chapter-meta"><span>wine</span><span>toast</span></div>
+          </article>
+
+          <article class="chapter-card" style="--accent:#f5efe4">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M30 67c5-30 38-36 55-11 17-2 30 10 31 27H20c-5-14-1-26 10-16z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M70 52c2-20 18-28 33-22-10 9-15 17-14 29" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+                <circle cx="50" cy="62" r="3" fill="currentColor"/>
+                <path d="M102 70c16-16 31-9 35 7" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Ричи</h3>
+              <p>Най-верният член на публиката. Понякога любовта има четири лапи и точен поглед.</p>
+            </div>
+            <div class="chapter-meta"><span>family</span><span>loyal</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="toast-zone" id="toast" aria-labelledby="toastTitle">
+      <div class="section-inner toast-layout">
+        <div class="toast-stage" aria-live="polite">
+          <div class="toast-number" id="toastTitle">Наздравица <span id="toastIndex">01</span> / 58</div>
+          <div class="toast-text" id="toastText">За човека, който прави живота по-силен.</div>
+          <div class="toast-sub" id="toastSub">Нека тази вечер звучи като любима китара, да е дълга като хубав път и да остане като първата глътка от наистина добро червено вино.</div>
+        </div>
+        <div class="toast-controls">
+          <div class="control-panel">
+            <label>
+              Обръщение
+              <input id="nameInput" type="text" value="Тате" maxlength="28" autocomplete="off">
+            </label>
+          </div>
+          <button class="primary-button" id="nextToast" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+            Следващ тост
+          </button>
+          <button class="secondary-button" id="randomToast" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h4c6 0 5 10 12 10M4 17h4c2 0 3-1 4-3M16 5l4 2-4 2M16 15l4 2-4 2"/>
+            </svg>
+            Разбъркай
+          </button>
+          <div class="control-panel">
+            <div class="progress" aria-hidden="true"><span id="toastProgress"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="photos" aria-labelledby="photosTitle">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 id="photosTitle">Снимките, които ще напълнят вечерта.</h2>
+          <p>Рок момент, море, пътуване, кола, чаша вино, Ричи - най-силната версия ще стане с твоите кадри.</p>
+        </div>
+        <div class="gallery-actions">
+          <label class="file-button" for="photoInput">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 5h16v14H4z"/>
+              <path fill="none" stroke="currentColor" stroke-width="2" d="m4 16 5-5 4 4 2-2 5 5"/>
+              <circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/>
+            </svg>
+            Добави снимки
+          </label>
+          <button class="secondary-button" id="clearPhotos" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 7h12M9 7V5h6v2M9 10v7M15 10v7M8 7l1 13h6l1-13"/>
+            </svg>
+            Изчисти
+          </button>
+          <input id="photoInput" type="file" accept="image/*" multiple>
+        </div>
+        <div class="photo-grid" id="photoGrid">
+          <article class="photo-frame">
+            <h3>Рок</h3>
+            <p>KISS, сцена и звук, който не се забравя.</p>
+          </article>
+          <article class="photo-frame">
+            <h3>Кайт</h3>
+            <p>Вятър, море и смелост да тръгнеш.</p>
+          </article>
+          <article class="photo-frame">
+            <h3>Път</h3>
+            <p>Истории от места, които остават.</p>
+          </article>
+          <article class="photo-frame">
+            <h3>Часовник</h3>
+            <p>Механика, вкус и точен момент.</p>
+          </article>
+          <article class="photo-frame">
+            <h3>Коли</h3>
+            <p>G-класа, 911 и онова усещане на пътя.</p>
+          </article>
+          <article class="photo-frame">
+            <h3>Ричи</h3>
+            <p>Верният поглед в центъра на семейството.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale" id="finale" aria-labelledby="finaleTitle">
+      <div class="section-inner">
+        <div class="finale-copy">
+          <p class="kicker">Финален тост</p>
+          <h2 id="finaleTitle">За още много пътища.</h2>
+          <p>
+            За здраве, сила, свобода и онзи вътрешен ритъм, който кара човека да обича живота
+            с пълна чаша, верни хора до себе си и музика, която никога не звучи тихо.
+          </p>
+          <button class="primary-button" id="finalToast" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="2" d="M8 3h8l-1 8a3 3 0 0 1-6 0L8 3Zm4 11v6m-4 0h8"/>
+            </svg>
+            Вдигни финалната чаша
+          </button>
+        </div>
+        <div class="vinyl" aria-hidden="true"><span>58</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="finalModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <p class="kicker">Наздраве</p>
+      <h2 id="modalTitle">Честит рожден ден, <span data-name-inline>Тате</span>.</h2>
+      <p>
+        Нека 58 бъде година с нови хоризонти, хубава музика, силни автомобили,
+        точни моменти, спокойно море, червено вино и Ричи наблизо.
+      </p>
+      <div class="modal-actions">
+        <button class="secondary-button" id="closeModal" type="button">Затвори</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="live-region" id="liveRegion" aria-live="polite"></div>
+
+  <script>
+    const nameInput = document.querySelector("#nameInput");
+    const nameTitle = document.querySelector("[data-name-title]");
+    const titleSmall = document.querySelector("[data-title]");
+    const inlineNames = document.querySelectorAll("[data-name-inline]");
+    const toastIndex = document.querySelector("#toastIndex");
+    const toastText = document.querySelector("#toastText");
+    const toastSub = document.querySelector("#toastSub");
+    const toastProgress = document.querySelector("#toastProgress");
+    const liveRegion = document.querySelector("#liveRegion");
+    const finalModal = document.querySelector("#finalModal");
+    const photoGrid = document.querySelector("#photoGrid");
+    const photoInput = document.querySelector("#photoInput");
+
+    const toasts = [
+      ["За силата", "Да имаш гръбнак, вкус и спокойствие, когато пътят стане стръмен."],
+      ["За рока", "Да звучи силно, честно и с онзи заряд, който събира хората около една сцена."],
+      ["За KISS", "За любимата група, големия звук и вечерите, които стават легенда."],
+      ["За вятъра", "Да идва откъдето трябва и да носи платното точно там, където сърцето иска."],
+      ["За морето", "Да има достатъчно хоризонт, за да не забравяме колко голям е светът."],
+      ["За куража", "Да тръгваш, когато другите чакат, и да се връщаш с история."],
+      ["За пътуванията", "Всеки град, всеки път и всяка граница да са добавяли още светлина."],
+      ["За картите", "Най-хубавите маршрути са тези, които после се разказват на маса."],
+      ["За часовниците", "За точността, която не е навик, а уважение към живота."],
+      ["За механиката", "Красотата понякога е в зъбните колела, стъклото и малките детайли."],
+      ["За G-класата", "За присъствие, стабилност и усещането, че пътят може да бъде всякакъв."],
+      ["За 911", "За линията, която не се нуждае от обяснение, защото е родена класика."],
+      ["За скоростта", "Да е премерена, чиста и винаги с посока."],
+      ["За червеното вино", "Да е дълбоко, спокойно и достатъчно добро за важните разговори."],
+      ["За чашите", "Да се вдигат с хора, които си струват."],
+      ["За Ричи", "За верния поглед, който познава човека още от вратата."],
+      ["За семейството", "Да е пристан, сцена, гараж, карта и дом едновременно."],
+      ["За приятелите", "Да бъдат истински, шумни когато трябва и тихи когато е важно."],
+      ["За здравето", "Да е стабилно като добър двигател и свободно като вятър."],
+      ["За смеха", "Да идва навреме и да остава дълго."],
+      ["За историите", "Най-добрите не се пишат, а се живеят."],
+      ["За стила", "Да личи без да се натрапва."],
+      ["За вкуса", "Към музика, коли, часовници, вино и хора."],
+      ["За спокойствието", "Да го има и в буря, и на магистрала, и на море."],
+      ["За годините", "58 не са число, а архив от смелост и хубави избори."],
+      ["За новото", "Да има още места, които чакат първата следа."],
+      ["За старото", "Да остане само това, което е доказало стойност."],
+      ["За пътя", "Да бъде дълъг, красив и с добра музика."],
+      ["За дома", "Да е мястото, където всичко важно се връща."],
+      ["За свободата", "Да не е поза, а начин да дишаш."],
+      ["За морските дни", "Сол, слънце, платно и вечерна чаша."],
+      ["За зимните вечери", "Добър албум, хубаво вино и хора наблизо."],
+      ["За двигателя", "Да работи гладко, мощно и с характер."],
+      ["За китарата", "Един риф понякога казва повече от цял тост."],
+      ["За сцената", "Където светлината пада точно върху човека, когото празнуваме."],
+      ["За часовата стрелка", "Да сочи към още хубави моменти."],
+      ["За компаса", "Да пази посоката, дори когато пътят се променя."],
+      ["За смелите решения", "Те правят биографията различна от графика."],
+      ["За хубавите коли", "Да са повече от машини - да са настроение."],
+      ["За детайлите", "Там живее вкусът."],
+      ["За силната музика", "Да буди спомени, но и желание за още."],
+      ["За тишината", "След буря, след концерт, след дълъг път."],
+      ["За честността", "Да стои в погледа и в думата."],
+      ["За присъствието", "Някои хора влизат в стаята и вечерта става по-истинска."],
+      ["За смелостта да обичаш", "Семейство, приятели, куче, море, път, звук и живот."],
+      ["За хубавия риск", "Кайтът го знае. Пътят също."],
+      ["За паметта", "Да пази най-силните дни с ясен звук."],
+      ["За масата", "Където разговорите стават по-дълги от плана."],
+      ["За годината напред", "Да има движение, здраве и правилни хора."],
+      ["За червеното", "Вино, сцена, стопове и малко пламък в погледа."],
+      ["За метала", "В часовника, в двигателя и в характера."],
+      ["За синьото", "В морето, хоризонта и спокойствието след вятъра."],
+      ["За златното", "В моментите, които не искаме да свършват."],
+      ["За 58", "Число с тежест, стил и още много километри пред себе си."],
+      ["За бащата", "Който не просто присъства, а оставя посока."],
+      ["За легендата", "Не защото е далечна, а защото е наша."],
+      ["За довечера", "Да бъде силна, тържествена и пълна с хората, които го обичат."],
+      ["За живота", "Да продължи да звучи силно, да носи далеч и да се пие бавно."]
+    ];
+
+    let currentToast = 0;
+    const photoUrls = [];
+
+    function getDisplayName() {
+      const value = nameInput.value.trim();
+      return value || "Тате";
+    }
+
+    function updateName() {
+      const displayName = getDisplayName();
+      nameTitle.textContent = displayName;
+      titleSmall.textContent = `${displayName} · 58`;
+      inlineNames.forEach((node) => {
+        node.textContent = displayName;
+      });
+      document.title = `${displayName} на 58`;
+    }
+
+    function renderToast(index) {
+      currentToast = (index + toasts.length) % toasts.length;
+      const [title, body] = toasts[currentToast];
+      toastIndex.textContent = String(currentToast + 1).padStart(2, "0");
+      toastText.textContent = title;
+      toastSub.textContent = body;
+      toastProgress.style.width = `${((currentToast + 1) / toasts.length) * 100}%`;
+      liveRegion.textContent = `${title}. ${body}`;
+    }
+
+    function makeConfetti(amount = 80) {
+      const colors = ["#d5a84b", "#c62232", "#f5efe4", "#176b7d", "#8aa0b4"];
+      for (let i = 0; i < amount; i += 1) {
+        const piece = document.createElement("span");
+        piece.className = "confetti";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.setProperty("--drift", `${(Math.random() - 0.5) * 44}vw`);
+        piece.style.setProperty("--fall", `${2.4 + Math.random() * 2.6}s`);
+        piece.style.transform = `rotate(${Math.random() * 180}deg)`;
+        document.body.append(piece);
+        window.setTimeout(() => piece.remove(), 5400);
+      }
+    }
+
+    function playIntro() {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      const context = new AudioContext();
+      const gain = context.createGain();
+      gain.gain.setValueAtTime(0.0001, context.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.08, context.currentTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.7);
+      gain.connect(context.destination);
+
+      [82.41, 110, 146.83].forEach((frequency, index) => {
+        const osc = context.createOscillator();
+        osc.type = index === 0 ? "sawtooth" : "triangle";
+        osc.frequency.value = frequency;
+        osc.connect(gain);
+        osc.start(context.currentTime + index * 0.05);
+        osc.stop(context.currentTime + 0.72);
+      });
+    }
+
+    function applyPhoto(file, index) {
+      const frame = photoGrid.children[index % photoGrid.children.length];
+      if (!frame) return;
+      const url = URL.createObjectURL(file);
+      photoUrls.push(url);
+      frame.querySelector("img")?.remove();
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = file.name.replace(/\.[^.]+$/, "");
+      frame.prepend(img);
+    }
+
+    document.querySelector("#igniteButton").addEventListener("click", () => {
+      makeConfetti(96);
+      playIntro();
+      document.querySelector("#chapters").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    document.querySelector("#nextToast").addEventListener("click", () => {
+      renderToast(currentToast + 1);
+      if ((currentToast + 1) % 8 === 0) makeConfetti(32);
+    });
+
+    document.querySelector("#randomToast").addEventListener("click", () => {
+      const next = Math.floor(Math.random() * toasts.length);
+      renderToast(next === currentToast ? next + 1 : next);
+      makeConfetti(24);
+    });
+
+    document.querySelector("#finalToast").addEventListener("click", () => {
+      finalModal.classList.add("open");
+      makeConfetti(130);
+      playIntro();
+    });
+
+    document.querySelector("#closeModal").addEventListener("click", () => {
+      finalModal.classList.remove("open");
+    });
+
+    finalModal.addEventListener("click", (event) => {
+      if (event.target === finalModal) finalModal.classList.remove("open");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") finalModal.classList.remove("open");
+    });
+
+    document.querySelector("#fullscreenButton").addEventListener("click", async () => {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen?.();
+      } else {
+        await document.exitFullscreen?.();
+      }
+    });
+
+    nameInput.addEventListener("input", updateName);
+
+    photoInput.addEventListener("change", (event) => {
+      const files = Array.from(event.target.files || []).filter((file) => file.type.startsWith("image/"));
+      files.forEach(applyPhoto);
+      photoInput.value = "";
+    });
+
+    document.querySelector("#clearPhotos").addEventListener("click", () => {
+      photoGrid.querySelectorAll("img").forEach((img) => img.remove());
+      while (photoUrls.length) URL.revokeObjectURL(photoUrls.pop());
+    });
+
+    updateName();
+    renderToast(0);
+  </script>
+</body>
+</html>
