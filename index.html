@@ -659,24 +659,26 @@
 
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 1rem;
     }
 
     .photo-frame {
       position: relative;
       display: grid;
+      grid-column: span 2;
       min-height: clamp(15rem, 26vw, 23rem);
-      padding: 1rem;
-      align-content: end;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 0.5rem;
       background:
-        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.76) 100%),
         linear-gradient(135deg, rgba(198,34,50,0.34), rgba(23,107,125,0.32)),
         #161b24;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .photo-frame:nth-child(n + 4) {
+      grid-column: span 3;
     }
 
     .photo-frame img {
@@ -695,20 +697,9 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.74)),
-        radial-gradient(circle at 20% 10%, rgba(213,168,75,0.26), transparent 12rem);
-    }
-
-    .photo-frame h3,
-    .photo-frame p {
-      position: relative;
-      z-index: 2;
-    }
-
-    .photo-frame p {
-      margin: 0.55rem 0 0;
-      color: #d8dee5;
-      line-height: 1.5;
+        linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.24)),
+        radial-gradient(circle at 20% 10%, rgba(213,168,75,0.18), transparent 12rem);
+      pointer-events: none;
     }
 
     .finale {
@@ -885,6 +876,15 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .photo-frame,
+      .photo-frame:nth-child(n + 4) {
+        grid-column: span 1;
+      }
+
+      .photo-frame:last-child {
+        grid-column: 1 / -1;
+      }
+
       .hero-shade {
         background:
           linear-gradient(180deg, rgba(7,8,13,0.9) 0%, rgba(7,8,13,0.48) 48%, rgba(7,8,13,0.92) 100%);
@@ -918,12 +918,16 @@
         grid-template-columns: 1fr;
       }
 
+      .photo-frame:last-child {
+        grid-column: auto;
+      }
+
       .stat {
         min-height: auto;
       }
 
       .chapter-grid {
-        grid-template-columns: repeat(7, minmax(82vw, 1fr));
+        grid-template-columns: repeat(8, minmax(82vw, 1fr));
       }
 
       .toast-stage {
@@ -1052,7 +1056,7 @@
           <h1 id="heroTitle"><span data-name-title>Тате</span> на 58</h1>
           <p class="subtitle">
             Вечер за човек с рок в кръвта, вятър в сърцето, точност в детайла,
-            вкус към пътя, скоростта, хубавото вино и верните същества.
+            вкус към пътя, скоростта, хубавото вино и силата да се грижи за себе си.
           </p>
         </div>
 
@@ -1096,8 +1100,8 @@
     <section class="chapters" id="chapters" aria-labelledby="chaptersTitle">
       <div class="section-inner">
         <div class="section-head">
-          <h2 id="chaptersTitle">Седем глави. Един човек.</h2>
-          <p>Рок, вятър, пътища, механика, автомобили, вино и Ричи - всичко, което прави празника личен.</p>
+          <h2 id="chaptersTitle">Осем глави. Един човек.</h2>
+          <p>Рок, вятър, пътища, механика, автомобили, спорт, вино и Ричи - всичко, което прави празника личен.</p>
         </div>
 
         <div class="chapter-grid" aria-label="Глави от празника">
@@ -1179,6 +1183,20 @@
             <div class="chapter-meta"><span>G</span><span>911</span></div>
           </article>
 
+          <article class="chapter-card" style="--accent:#4f9d69">
+            <div class="chapter-symbol">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <path d="M22 47v26M35 38v44M85 38v44M98 47v26M35 60h50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+                <path d="M13 54v12M107 54v12" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Сила и форма</h3>
+              <p>Фитнес, движение и дисциплина - не за показ, а за здраве, енергия и още много силни години.</p>
+            </div>
+            <div class="chapter-meta"><span>fitness</span><span>health</span></div>
+          </article>
+
           <article class="chapter-card" style="--accent:#6f1422">
             <div class="chapter-symbol">
               <svg viewBox="0 0 120 120" aria-hidden="true">
@@ -1249,8 +1267,8 @@
     <section class="gallery" id="photos" aria-labelledby="photosTitle">
       <div class="section-inner">
         <div class="section-head">
-          <h2 id="photosTitle">Снимките, които ще напълнят вечерта.</h2>
-          <p>Рок момент, море, пътуване, кола, чаша вино, Ричи - най-силната версия ще стане с твоите кадри.</p>
+          <h2 id="photosTitle">Пет момента. Цял един живот.</h2>
+          <p>Само кадрите, без описания - защото най-важните снимки говорят сами.</p>
         </div>
         <div class="gallery-actions">
           <label class="file-button" for="photoInput">
@@ -1259,7 +1277,7 @@
               <path fill="none" stroke="currentColor" stroke-width="2" d="m4 16 5-5 4 4 2-2 5 5"/>
               <circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/>
             </svg>
-            Добави снимки
+            Прегледай 5 снимки
           </label>
           <button class="secondary-button" id="clearPhotos" type="button">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1270,30 +1288,11 @@
           <input id="photoInput" type="file" accept="image/*" multiple>
         </div>
         <div class="photo-grid" id="photoGrid">
-          <article class="photo-frame">
-            <h3>Рок</h3>
-            <p>KISS, сцена и звук, който не се забравя.</p>
-          </article>
-          <article class="photo-frame">
-            <h3>Кайт</h3>
-            <p>Вятър, море и смелост да тръгнеш.</p>
-          </article>
-          <article class="photo-frame">
-            <h3>Път</h3>
-            <p>Истории от места, които остават.</p>
-          </article>
-          <article class="photo-frame">
-            <h3>Часовник</h3>
-            <p>Механика, вкус и точен момент.</p>
-          </article>
-          <article class="photo-frame">
-            <h3>Коли</h3>
-            <p>G-класа, 911 и онова усещане на пътя.</p>
-          </article>
-          <article class="photo-frame">
-            <h3>Ричи</h3>
-            <p>Верният поглед в центъра на семейството.</p>
-          </article>
+          <article class="photo-frame" aria-label="Снимка 1"></article>
+          <article class="photo-frame" aria-label="Снимка 2"></article>
+          <article class="photo-frame" aria-label="Снимка 3"></article>
+          <article class="photo-frame" aria-label="Снимка 4"></article>
+          <article class="photo-frame" aria-label="Снимка 5"></article>
         </div>
       </div>
     </section>
@@ -1368,7 +1367,7 @@
       ["За Ричи", "За верния поглед, който познава човека още от вратата."],
       ["За семейството", "Да е пристан, сцена, гараж, карта и дом едновременно."],
       ["За приятелите", "Да бъдат истински, шумни когато трябва и тихи когато е важно."],
-      ["За здравето", "Да е стабилно като добър двигател и свободно като вятър."],
+      ["За здравето", "Движение, добра форма и дисциплина - за още много години с енергия и сила."],
       ["За смеха", "Да идва навреме и да остава дълго."],
       ["За историите", "Най-добрите не се пишат, а се живеят."],
       ["За стила", "Да личи без да се натрапва."],
@@ -1531,7 +1530,11 @@
     nameInput.addEventListener("input", updateName);
 
     photoInput.addEventListener("change", (event) => {
-      const files = Array.from(event.target.files || []).filter((file) => file.type.startsWith("image/"));
+      photoGrid.querySelectorAll("img").forEach((img) => img.remove());
+      while (photoUrls.length) URL.revokeObjectURL(photoUrls.pop());
+      const files = Array.from(event.target.files || [])
+        .filter((file) => file.type.startsWith("image/"))
+        .slice(0, photoGrid.children.length);
       files.forEach(applyPhoto);
       photoInput.value = "";
     });
