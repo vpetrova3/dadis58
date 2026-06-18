@@ -639,56 +639,36 @@
         linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.05));
     }
 
-    .gallery-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      align-items: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .gallery input[type="file"] {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      white-space: nowrap;
-    }
-
     .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 1rem;
+      columns: 3 18rem;
+      column-gap: 1rem;
     }
 
     .photo-frame {
       position: relative;
-      display: grid;
-      grid-column: span 2;
-      min-height: clamp(15rem, 26vw, 23rem);
+      display: block;
+      width: 100%;
+      margin: 0 0 1rem;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 0.5rem;
-      background:
-        linear-gradient(135deg, rgba(198,34,50,0.34), rgba(23,107,125,0.32)),
-        #161b24;
+      background: #161b24;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-    }
-
-    .photo-frame:nth-child(n + 4) {
-      grid-column: span 3;
+      break-inside: avoid;
+      line-height: 0;
     }
 
     .photo-frame img {
-      position: absolute;
-      inset: 0;
+      position: relative;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
       z-index: 0;
-      transform: scale(1.01);
+      transition: transform 500ms ease;
+    }
+
+    .photo-frame:hover img {
+      transform: scale(1.025);
     }
 
     .photo-frame::before {
@@ -873,16 +853,7 @@
       }
 
       .photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .photo-frame,
-      .photo-frame:nth-child(n + 4) {
-        grid-column: span 1;
-      }
-
-      .photo-frame:last-child {
-        grid-column: 1 / -1;
+        columns: 2 16rem;
       }
 
       .hero-shade {
@@ -901,7 +872,6 @@
       }
 
       .hero-actions,
-      .gallery-actions,
       .modal-actions {
         align-items: stretch;
         flex-direction: column;
@@ -913,13 +883,12 @@
         width: 100%;
       }
 
-      .photo-grid,
-      .hero-stats {
-        grid-template-columns: 1fr;
+      .photo-grid {
+        columns: 1;
       }
 
-      .photo-frame:last-child {
-        grid-column: auto;
+      .hero-stats {
+        grid-template-columns: 1fr;
       }
 
       .stat {
@@ -1269,29 +1238,15 @@
         <div class="section-head">
           <h2 id="photosTitle">Спомени.</h2>
         </div>
-        <div class="gallery-actions">
-          <label class="file-button" for="photoInput">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 5h16v14H4z"/>
-              <path fill="none" stroke="currentColor" stroke-width="2" d="m4 16 5-5 4 4 2-2 5 5"/>
-              <circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/>
-            </svg>
-            Прегледай 5 снимки
-          </label>
-          <button class="secondary-button" id="clearPhotos" type="button">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 7h12M9 7V5h6v2M9 10v7M15 10v7M8 7l1 13h6l1-13"/>
-            </svg>
-            Изчисти
-          </button>
-          <input id="photoInput" type="file" accept="image/*" multiple>
-        </div>
-        <div class="photo-grid" id="photoGrid">
-          <article class="photo-frame" aria-label="Снимка 1"></article>
-          <article class="photo-frame" aria-label="Снимка 2"></article>
-          <article class="photo-frame" aria-label="Снимка 3"></article>
-          <article class="photo-frame" aria-label="Снимка 4"></article>
-          <article class="photo-frame" aria-label="Снимка 5"></article>
+        <div class="photo-grid">
+          <article class="photo-frame"><img src="assets/photos/memory-01.webp" alt="Семеен спомен" width="2200" height="1650" loading="lazy" decoding="async"></article>
+          <article class="photo-frame"><img src="assets/photos/memory-02.webp" alt="Семеен спомен" width="2200" height="1650" loading="lazy" decoding="async"></article>
+          <article class="photo-frame"><img src="assets/photos/memory-03.webp" alt="Семеен спомен" width="2200" height="1650" loading="lazy" decoding="async"></article>
+          <article class="photo-frame"><img src="assets/photos/memory-04.webp" alt="Семеен спомен" width="1123" height="1600" loading="lazy" decoding="async"></article>
+          <article class="photo-frame"><img src="assets/photos/memory-05.webp" alt="Семеен спомен" width="1024" height="768" loading="lazy" decoding="async"></article>
+          <article class="photo-frame"><img src="assets/photos/memory-06.webp" alt="Семеен спомен" width="1033" height="1540" loading="lazy" decoding="async"></article>
+          <article class="photo-frame"><img src="assets/photos/memory-07.webp" alt="Семеен спомен" width="1024" height="768" loading="lazy" decoding="async"></article>
+          <article class="photo-frame"><img src="assets/photos/memory-08.webp" alt="Семеен спомен" width="2200" height="1238" loading="lazy" decoding="async"></article>
         </div>
       </div>
     </section>
@@ -1344,8 +1299,6 @@
     const toastProgress = document.querySelector("#toastProgress");
     const liveRegion = document.querySelector("#liveRegion");
     const finalModal = document.querySelector("#finalModal");
-    const photoGrid = document.querySelector("#photoGrid");
-    const photoInput = document.querySelector("#photoInput");
 
     const toasts = [
       ["За силата", "Да имаш гръбнак, вкус и спокойствие, когато пътят стане стръмен."],
@@ -1409,7 +1362,6 @@
     ];
 
     let currentToast = 0;
-    const photoUrls = [];
 
     function getDisplayName() {
       const value = nameInput.value.trim();
@@ -1471,18 +1423,6 @@
       });
     }
 
-    function applyPhoto(file, index) {
-      const frame = photoGrid.children[index % photoGrid.children.length];
-      if (!frame) return;
-      const url = URL.createObjectURL(file);
-      photoUrls.push(url);
-      frame.querySelector("img")?.remove();
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = file.name.replace(/\.[^.]+$/, "");
-      frame.prepend(img);
-    }
-
     document.querySelector("#igniteButton").addEventListener("click", () => {
       makeConfetti(96);
       playIntro();
@@ -1527,21 +1467,6 @@
     });
 
     nameInput.addEventListener("input", updateName);
-
-    photoInput.addEventListener("change", (event) => {
-      photoGrid.querySelectorAll("img").forEach((img) => img.remove());
-      while (photoUrls.length) URL.revokeObjectURL(photoUrls.pop());
-      const files = Array.from(event.target.files || [])
-        .filter((file) => file.type.startsWith("image/"))
-        .slice(0, photoGrid.children.length);
-      files.forEach(applyPhoto);
-      photoInput.value = "";
-    });
-
-    document.querySelector("#clearPhotos").addEventListener("click", () => {
-      photoGrid.querySelectorAll("img").forEach((img) => img.remove());
-      while (photoUrls.length) URL.revokeObjectURL(photoUrls.pop());
-    });
 
     updateName();
     renderToast(0);
